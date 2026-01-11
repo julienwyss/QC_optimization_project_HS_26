@@ -3,7 +3,7 @@ import networkx as nx
 import matplotlib.pyplot as plt
 
 
-def visualize_graph(G, provided_solution, our_solution, title="Graph Visualization"):
+def visualize_graph(G, provided_solution, our_solution, title="Graph Visualization", output_path=None):
     plt.figure(figsize=(12, 8))
     pos = nx.spring_layout(G, seed=42)
     node_colors = []
@@ -42,7 +42,11 @@ def visualize_graph(G, provided_solution, our_solution, title="Graph Visualizati
     plt.title(title)
     plt.legend()
     plt.axis('off')
-    plt.show()
+    if output_path:
+        plt.savefig(output_path, dpi=200, bbox_inches='tight')
+        plt.close()
+    else:
+        plt.show()
 
 
 
@@ -94,8 +98,8 @@ def read_graph_file(graph_path):
     return G
 
 if __name__ == "__main__":
-    if len(sys.argv) != 4:
-        print("Usage: python graph_visualizer.py <graph_file> <provided_solution_file> <our_solution_file>")
+    if len(sys.argv) < 4:
+        print("Usage: python graph_visualizer.py <graph_file> <provided_solution_file> <our_solution_file> [output_path]")
         sys.exit(1)
     graph_file = sys.argv[1]
     provided_solution_file = sys.argv[2]
@@ -103,4 +107,7 @@ if __name__ == "__main__":
     G = read_graph_file(graph_file)
     provided_solution = read_solution_file(provided_solution_file)
     our_solution = read_solution_file(our_solution_file)
-    visualize_graph(G, provided_solution, our_solution)
+    output_path = None
+    if len(sys.argv) >= 5:
+        output_path = sys.argv[4]
+    visualize_graph(G, provided_solution, our_solution, output_path=output_path)
