@@ -24,3 +24,10 @@ The project is based on the following `Quantum Optimization Benchmarking Library
 ![Visualization Example 1](visualizations/ibm32.png)
 
 ![Visualization Example 2](visualizations/brock200-1.png)
+
+## Authors
+
+- Wyss Julien
+- Perret Lucien
+- Zürcher Patrick
+- Esposito Diego
