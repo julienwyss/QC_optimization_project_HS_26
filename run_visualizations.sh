@@ -3,7 +3,7 @@ set -euo pipefail
 
 # Iteriere über alle Graph-Dateien in instances2 und erstelle Visualisierungen
 BASE_DIR="$(cd "$(dirname "$0")" && pwd)"
-INST_DIR="$BASE_DIR/instances2"
+INST_DIR="$BASE_DIR/instances"
 PROVIDED_DIR="$BASE_DIR/solutions"
 OUR_DIR="$BASE_DIR/solutionstemp"
 OUT_DIR="$BASE_DIR/visualizations"
